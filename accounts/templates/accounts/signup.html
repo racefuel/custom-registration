@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% if error %}
+
+{{ error }}
+
+{% endif %}
+
+<h2 class="text-center pt-3">Create New Account</h2>
+<div class="content-section">
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <fieldset class="form-group">
+
+            First Name: <br>
+            <input type="text" name="first_name"> <br>
+            Last Name: <br>
+            <input type="text" name="last_name"> <br>
+            Email: <br>
+            <input type="email" name="email"> <br>
+            Password: <br>
+            <input type="password" name="password0"> <br>
+            Confirm Password: <br>
+            <input type="password" name="password1"> <br> <br>
+
+        </fieldset>
+
+        <input class="btn btn-primary" type="submit" value="Sign Up!">
+    </form>
+</div>
+
+<div class="border-top pt-3">
+    <small class="text-muted">Already have an account? <a class="ml-2" href="{% url 'login' %}">Log In</a></small>
+</div>
+
+{% endblock %}
